@@ -1,5 +1,4 @@
 import React, { Component, Fragment, PureComponent} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import DataSheet from './spreadsheet/DataSheet';
 import './spreadsheet/react-datasheet.css';
