@@ -1,17 +1,17 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-import CellShape from './CellShape'
+import CellShape from './CellShape';
 
 export default class Cell extends PureComponent {
-  render () {
+  render() {
     const {
-          cell, row, col, attributesRenderer,
-          className, style, onMouseDown, onMouseOver, onDoubleClick, onContextMenu
-        } = this.props
+      cell, row, col, attributesRenderer,
+      className, style, onMouseDown, onMouseOver, onDoubleClick, onContextMenu
+    } = this.props;
 
-    const {colSpan, rowSpan} = cell
-    const attributes = attributesRenderer ? attributesRenderer(cell, row, col) : {}
+    const { colSpan, rowSpan } = cell;
+    const attributes = attributesRenderer ? attributesRenderer(cell, row, col) : {};
     return (
       <td
         className={className}
@@ -26,7 +26,7 @@ export default class Cell extends PureComponent {
       >
         {this.props.children}
       </td>
-    )
+    );
   }
 }
 
@@ -43,12 +43,13 @@ Cell.propTypes = {
   onDoubleClick: PropTypes.func.isRequired,
   onContextMenu: PropTypes.func.isRequired,
   className: PropTypes.string,
-  style: PropTypes.object
-}
+  style: PropTypes.object,
+  children: PropTypes.element.isRequired
+};
 
 Cell.defaultProps = {
   selected: false,
   editing: false,
   updated: false,
   attributesRenderer: () => {}
-}
+};
