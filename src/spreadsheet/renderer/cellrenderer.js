@@ -15,7 +15,6 @@ const CellRenderer = props => {
   if (col === 0) {
     attributes.title = cell.label;
   }
-
   return (
     <Tag {...rest} {...attributes}>
       {props.children}
@@ -23,7 +22,10 @@ const CellRenderer = props => {
   );
 };
 CellRenderer.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array
+  ]),
   as: PropTypes.PropTypes.string,
   cellAs: PropTypes.PropTypes.string,
   headerAs: PropTypes.PropTypes.string,

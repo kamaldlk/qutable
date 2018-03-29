@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import CellShape from './CellShape';
+import CellShape from '../core/cell.shape';
 
 export default class Cell extends PureComponent {
   render() {

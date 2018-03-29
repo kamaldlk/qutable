@@ -1,13 +1,13 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Sheet from './Sheet';
-import Row from './Row';
-import Cell from './Cell';
-import DataCell from './DataCell';
-import DataEditor from './DataEditor';
-import ValueViewer from './ValueViewer';
+import Sheet from '../core/sheet';
+import Row from '../rowcell/row';
+import Cell from '../rowcell/cell';
+import DataCell from './data.cell';
+import DataEditor from './data.editor';
+import ValueViewer from './value.viewer';
 import { TAB_KEY, ENTER_KEY, DELETE_KEY, ESCAPE_KEY, BACKSPACE_KEY,
-  LEFT_KEY, UP_KEY, DOWN_KEY, RIGHT_KEY } from './keys';
+  LEFT_KEY, UP_KEY, DOWN_KEY, RIGHT_KEY } from '../constants/keyboard.keys';
 
 const isEmpty = (obj) => Object.keys(obj).length === 0;
 
@@ -453,7 +453,6 @@ export default class DataSheet extends PureComponent {
       dataRenderer, valueRenderer, dataEditor, valueViewer, attributesRenderer,
       className, overflow, data, keyFn } = this.props;
     const { forceEdit } = this.state;
-    console.log('overflow', overflow);
     return (
       <div ref={r => { this.dgDom = r; }} tabIndex="0" className="data-grid-container" onKeyDown={this.handleKey}>
         <SheetRenderer data={data} className={['data-grid', className, overflow].filter(a => a).join(' ')}>

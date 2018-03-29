@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { ENTER_KEY, ESCAPE_KEY, TAB_KEY, RIGHT_KEY, LEFT_KEY, UP_KEY, DOWN_KEY } from './keys';
+import { ENTER_KEY, ESCAPE_KEY, TAB_KEY, RIGHT_KEY, LEFT_KEY, UP_KEY, DOWN_KEY } from '../constants/keyboard.keys';
 
-import Cell from './Cell';
-import CellShape from './CellShape';
-import DataEditor from './DataEditor';
-import ValueViewer from './ValueViewer';
-import { renderValue, renderData } from './renderHelpers';
+import Cell from '../rowcell/cell';
+import CellShape from './cell.shape';
+import DataEditor from './data.editor';
+import ValueViewer from './value.viewer';
+import { renderValue, renderData } from '../helper/render.helpers';
 
 function initialData({ cell, row, col, valueRenderer, dataRenderer }) {
   return renderData(cell, row, col, valueRenderer, dataRenderer);

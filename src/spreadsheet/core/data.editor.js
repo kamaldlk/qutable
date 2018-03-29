@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import CellShape from './CellShape';
+import CellShape from './cell.shape';
 
 export default class DataEditor extends PureComponent {
   constructor(props) {

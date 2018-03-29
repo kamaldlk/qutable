@@ -17,7 +17,10 @@ const RowRenderer = props => {
 };
 
 RowRenderer.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array
+  ]),
   Tag: PropTypes.PropTypes.string,
   as: PropTypes.PropTypes.string,
   cellAs: PropTypes.PropTypes.string,

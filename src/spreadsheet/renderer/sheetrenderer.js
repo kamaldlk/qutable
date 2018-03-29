@@ -28,7 +28,10 @@ const SheetRenderer = props => {
 
 
 SheetRenderer.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array
+  ]),
   as: PropTypes.PropTypes.string,
   cellAs: PropTypes.PropTypes.string,
   headerAs: PropTypes.PropTypes.string,

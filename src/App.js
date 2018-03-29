@@ -1,10 +1,8 @@
-import React, { Component, Fragment, PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
 import './App.css';
-import DataSheet from './spreadsheet/DataSheet';
-import './spreadsheet/react-datasheet.css';
+import DataSheet from './spreadsheet/core/data.sheet';
+import './spreadsheet/css/datasheet.css';
 import './reset.css';
-import 'react-select/dist/react-select.css';
 import SheetRenderer from './spreadsheet/renderer/sheetrenderer';
 import RowRenderer from './spreadsheet/renderer/rowrenderer';
 import CellRenderer from './spreadsheet/renderer/cellrenderer';
@@ -139,7 +137,7 @@ class App extends Component {
             value: row[key] || '',
             width: this.data.Columns[index].Width,
             Name: this.data.Columns[index].Name,
-            // readOnly: this.data.Columns[index].readOnly,
+            readOnly: this.data.Columns[index].readOnly,
             dataEditor: this.data.Columns[index].dataEditor
           });
           ++index;
@@ -147,7 +145,6 @@ class App extends Component {
         return rowData;
       })
     ];
-    console.log(grid);
     this.state = {
       as: 'table',
       columns: this.data.Columns,
@@ -198,14 +195,19 @@ class App extends Component {
   }
   sheetRenderer(props) {
     const { columns, selections } = this.state;
-    console.log(columns, selections, props);
     switch (this.state.as) {
     case 'list':
-      return <SheetRenderer columns={columns} selections={selections} onSelectAllChanged={this.handleSelectAllChanged} as="segment" headerAs="div" bodyAs="ul" rowAs="div" cellAs="div" {...props} />;
+      return (<SheetRenderer columns={columns} selections={selections}
+        onSelectAllChanged={this.handleSelectAllChanged} as="segment"
+        headerAs="div" bodyAs="ul" rowAs="div" cellAs="div" {...props} />);
     case 'div':
-      return <SheetRenderer columns={columns} selections={selections} onSelectAllChanged={this.handleSelectAllChanged} as="div" headerAs="div" bodyAs="div" rowAs="div" cellAs="div" {...props} />;
+      return (<SheetRenderer columns={columns} selections={selections}
+        onSelectAllChanged={this.handleSelectAllChanged} as="div"
+        headerAs="div" bodyAs="div" rowAs="div" cellAs="div" {...props} />);
     default:
-      return <SheetRenderer columns={columns} selections={selections} onSelectAllChanged={this.handleSelectAllChanged} as="table" headerAs="thead" bodyAs="tbody" rowAs="tr" cellAs="th" {...props} />;
+      return (<SheetRenderer columns={columns} selections={selections}
+        onSelectAllChanged={this.handleSelectAllChanged} as="table"
+        headerAs="thead" bodyAs="tbody" rowAs="tr" cellAs="th" {...props} />);
     }
   }
 
@@ -213,11 +215,14 @@ class App extends Component {
     const { selections } = this.state;
     switch (this.state.as) {
     case 'list':
-      return <RowRenderer as="li" cellAs="div" selected={selections[props.row]} onSelectChanged={this.handleSelectChanged} className="data-row" {...props} />;
+      return (<RowRenderer as="li" cellAs="div" selected={selections[props.row]}
+        onSelectChanged={this.handleSelectChanged} className="data-row" {...props} />);
     case 'div':
-      return <RowRenderer as="div" cellAs="div" selected={selections[props.row]} onSelectChanged={this.handleSelectChanged} className="data-row" {...props} />;
+      return (<RowRenderer as="div" cellAs="div" selected={selections[props.row]}
+        onSelectChanged={this.handleSelectChanged} className="data-row" {...props} />);
     default:
-      return <RowRenderer as="tr" cellAs="td" selected={selections[props.row]} onSelectChanged={this.handleSelectChanged} className="data-row" {...props} />;
+      return (<RowRenderer as="tr" cellAs="td" selected={selections[props.row]}
+        onSelectChanged={this.handleSelectChanged} className="data-row" {...props} />);
     }
   }
 
