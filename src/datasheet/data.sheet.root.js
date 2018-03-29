@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import './App.css';
-import DataSheet from './spreadsheet/core/data.sheet';
-import './spreadsheet/css/datasheet.css';
-import './reset.css';
-import SheetRenderer from './spreadsheet/renderer/sheetrenderer';
-import RowRenderer from './spreadsheet/renderer/rowrenderer';
-import CellRenderer from './spreadsheet/renderer/cellrenderer';
+import '../App.css';
+import DataSheet from './core/data.sheet';
+import './css/datasheet.css';
+import '../reset.css';
+import SheetRenderer from './renderer/sheetrenderer';
+import RowRenderer from './renderer/rowrenderer';
+import CellRenderer from './renderer/cellrenderer';
 
-class App extends Component {
+class DataSheetRoot extends Component {
   constructor(props) {
     super(props);
     this.handleSelect = this.handleSelect.bind(this);
@@ -278,4 +278,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default DataSheetRoot;
