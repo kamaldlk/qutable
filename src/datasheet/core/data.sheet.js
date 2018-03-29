@@ -454,8 +454,8 @@ export default class DataSheet extends PureComponent {
       className, overflow, data, keyFn } = this.props;
     const { forceEdit } = this.state;
     return (
-      <div ref={r => { this.dgDom = r; }} tabIndex="0" className="data-grid-container" onKeyDown={this.handleKey}>
-        <SheetRenderer data={data} className={['data-grid', className, overflow].filter(a => a).join(' ')}>
+      <div ref={r => { this.dgDom = r; }} tabIndex="0" className="dataGridContainer" onKeyDown={this.handleKey}>
+        <SheetRenderer data={data} className={['dataGrid', className, overflow].filter(a => a).join(' ')}>
           {data.map((row, i) =>
             (<RowRenderer key={keyFn ? keyFn(i) : i} row={i} cells={row}>
               {

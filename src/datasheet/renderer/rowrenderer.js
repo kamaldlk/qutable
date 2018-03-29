@@ -4,7 +4,7 @@ const RowRenderer = props => {
   const { as: Tag, cellAs: Cell, className, row, selected, onSelectChanged } = props;
   return (
     <Tag className={className}>
-      <Cell className="action-cell cell">
+      <Cell className="actionCell cell">
         <input
           type="checkbox"
           checked={selected}
@@ -26,7 +26,7 @@ RowRenderer.propTypes = {
   cellAs: PropTypes.PropTypes.string,
   className: PropTypes.PropTypes.string,
   row: PropTypes.number.isRequired,
-  selected: PropTypes.bool.isRequired,
+  selected: PropTypes.bool,
   onSelectChanged: PropTypes.func
 };
 

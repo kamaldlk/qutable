@@ -7,7 +7,7 @@ export default class ValueViewer extends PureComponent {
   render() {
     const { value } = this.props;
     return (
-      <span className="value-viewer">
+      <span className="valueViewer">
         {value}
       </span>
     );

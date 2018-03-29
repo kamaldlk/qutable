@@ -7,9 +7,9 @@ const SheetRenderer = props => {
     className, columns, selections, onSelectAllChanged } = props;
   return (
     <Tag className={className}>
-      <Header className="data-header">
+      <Header className="dataHeader">
         <Row>
-          <Cell className="action-cell cell">
+          <Cell className="actionCell cell">
             <input
               type="checkbox"
               checked={selections.every(s => s)}
@@ -19,7 +19,7 @@ const SheetRenderer = props => {
           {columns.map(column => <Cell className="cell" style={{ width: column.Width + 'px' }} key={column.Name}>{column.Name}</Cell>)}
         </Row>
       </Header>
-      <Body className="data-body">
+      <Body className="dataBody">
         {props.children}
       </Body>
     </Tag>

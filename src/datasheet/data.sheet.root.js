@@ -1,12 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import '../App.css';
 import DataSheet from './core/data.sheet';
-import './css/datasheet.css';
-import '../reset.css';
 import SheetRenderer from './renderer/sheetrenderer';
 import RowRenderer from './renderer/rowrenderer';
 import CellRenderer from './renderer/cellrenderer';
-
 class DataSheetRoot extends Component {
   constructor(props) {
     super(props);
@@ -216,13 +212,13 @@ class DataSheetRoot extends Component {
     switch (this.state.as) {
     case 'list':
       return (<RowRenderer as="li" cellAs="div" selected={selections[props.row]}
-        onSelectChanged={this.handleSelectChanged} className="data-row" {...props} />);
+        onSelectChanged={this.handleSelectChanged} className="dataRow" {...props} />);
     case 'div':
       return (<RowRenderer as="div" cellAs="div" selected={selections[props.row]}
-        onSelectChanged={this.handleSelectChanged} className="data-row" {...props} />);
+        onSelectChanged={this.handleSelectChanged} className="dataRow" {...props} />);
     default:
       return (<RowRenderer as="tr" cellAs="td" selected={selections[props.row]}
-        onSelectChanged={this.handleSelectChanged} className="data-row" {...props} />);
+        onSelectChanged={this.handleSelectChanged} className="dataRow" {...props} />);
     }
   }
 
@@ -253,7 +249,6 @@ class DataSheetRoot extends Component {
 
         <DataSheet
           data={this.state.grid}
-          className="custom-sheet"
           sheetRenderer={this.sheetRenderer}
           headerRenderer={this.headerRenderer}
           bodyRenderer={this.bodyRenderer}

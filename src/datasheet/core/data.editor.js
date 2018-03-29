@@ -22,7 +22,7 @@ export default class DataEditor extends PureComponent {
     return (
       <input
         ref={input => { this._input = input; }}
-        className="data-editor"
+        className="dataEditor"
         value={value}
         onChange={this.handleChange}
         onKeyDown={onKeyDown}

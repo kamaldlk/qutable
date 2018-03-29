@@ -1,5 +1,5 @@
 
-import React, { Component, Fragment, PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 const CellRenderer = props => {
   const {
