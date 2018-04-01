@@ -14,7 +14,7 @@
   transition : background-color 0ms ease ;
 }
 .cell {
-  height: 40px;
+  min-height:4rem;
   user-select: none;
   cursor: cell;
   background-color: unset;
@@ -51,14 +51,14 @@
 .dataGridContainer .dataGrid .cell .valueViewer, .dataGridContainer .dataGrid .cell .dataEditor {
   display: block;
   box-sizing: border-box;
-  padding: 0 10px;
+  padding: 0 1rem;
 }
 
 
 .dataGrid .dataHeader>div>div.actionCell,
 .dataGrid .dataHeader>tr>.actionCell,
 .dataGrid .dataBody .dataRow>div.actionCell {
-  width: 40px;
+  width: 4rem;
 }
 
 .rowHandle.cell {
