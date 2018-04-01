@@ -8,7 +8,7 @@ import DataEditor from './data.editor';
 import ValueViewer from './value.viewer';
 import { TAB_KEY, ENTER_KEY, DELETE_KEY, ESCAPE_KEY, BACKSPACE_KEY,
   LEFT_KEY, UP_KEY, DOWN_KEY, RIGHT_KEY } from '../constants/keyboard.keys';
-
+import styles from '../css/datasheet.css';
 const isEmpty = (obj) => Object.keys(obj).length === 0;
 
 const range = (start, end) => {
@@ -454,8 +454,9 @@ export default class DataSheet extends PureComponent {
       className, overflow, data, keyFn } = this.props;
     const { forceEdit } = this.state;
     return (
-      <div ref={r => { this.dgDom = r; }} tabIndex="0" className="dataGridContainer" onKeyDown={this.handleKey}>
-        <SheetRenderer data={data} className={['dataGrid', className, overflow].filter(a => a).join(' ')}>
+      <div ref={r => { this.dgDom = r; }} tabIndex="0"
+        className={`${styles.dataGridContainer}`} onKeyDown={this.handleKey}>
+        <SheetRenderer data={data} className={[styles.dataGrid, className, overflow].filter(a => a).join(' ')}>
           {data.map((row, i) =>
             (<RowRenderer key={keyFn ? keyFn(i) : i} row={i} cells={row}>
               {

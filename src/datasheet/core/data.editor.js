@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import CellShape from './cell.shape';
-
+import styles from '../css/datasheet.css';
 export default class DataEditor extends PureComponent {
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ export default class DataEditor extends PureComponent {
     return (
       <input
         ref={input => { this._input = input; }}
-        className="dataEditor"
+        className={`${styles.dataEditor} ${styles.dataEditorType}`}
         value={value}
         onChange={this.handleChange}
         onKeyDown={onKeyDown}

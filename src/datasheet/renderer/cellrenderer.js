@@ -8,9 +8,7 @@ const CellRenderer = props => {
     ...rest
   } = props;
 
-  // hey, how about some custom attributes on our cell?
   const attributes = cell.attributes || {};
-  // ignore default style handed to us by the component and roll our own
   attributes.style = { width: columns[col].Width + 'px' };
   if (col === 0) {
     attributes.title = cell.label;

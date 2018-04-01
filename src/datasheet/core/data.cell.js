@@ -8,7 +8,7 @@ import CellShape from './cell.shape';
 import DataEditor from './data.editor';
 import ValueViewer from './value.viewer';
 import { renderValue, renderData } from '../helper/render.helpers';
-
+import styles from '../css/datasheet.css';
 function initialData({ cell, row, col, valueRenderer, dataRenderer }) {
   return renderData(cell, row, col, valueRenderer, dataRenderer);
 }
@@ -171,11 +171,11 @@ export default class DataCell extends PureComponent {
 
     const className = [
       cell.className,
-      'cell', cell.overflow,
-      selected && 'selected',
-      editing && 'editing',
-      cell.readOnly && 'read-only',
-      updated && 'updated'
+      styles.cell, cell.overflow,
+      selected && styles.selected,
+      editing && styles.editing,
+      cell.readOnly && styles.readOnly,
+      updated && styles.updated
     ].filter(a => a).join(' ');
     return (
       <CellRenderer

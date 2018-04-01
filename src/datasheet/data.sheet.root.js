@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from 'react';
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import DataSheet from './core/data.sheet';
 import SheetRenderer from './renderer/sheetrenderer';
 import RowRenderer from './renderer/rowrenderer';
 import CellRenderer from './renderer/cellrenderer';
+import styles from './css/datasheet.css';
 class DataSheetRoot extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +13,8 @@ class DataSheetRoot extends Component {
     this.handleSelectAllChanged = this.handleSelectAllChanged.bind(this);
     this.handleSelectChanged = this.handleSelectChanged.bind(this);
     this.handleCellsChanged = this.handleCellsChanged.bind(this);
-
+    this.handleColumnDrop = this.handleColumnDrop.bind(this);
+    this.handleRowDrop = this.handleRowDrop.bind(this);
     this.sheetRenderer = this.sheetRenderer.bind(this);
     this.rowRenderer = this.rowRenderer.bind(this);
     this.cellRenderer = this.cellRenderer.bind(this);
@@ -128,7 +132,7 @@ class DataSheetRoot extends Component {
       ...this.data[tableName].map(row => {
         let rowData = [];
         let index = 0;
-        for(let key in row) {
+        for (let key in row) {
           rowData.push({
             value: row[key] || '',
             width: this.data.Columns[index].Width,
@@ -154,6 +158,7 @@ class DataSheetRoot extends Component {
   }
 
   handleSelectAllChanged(selected) {
+    console.log('selected', selected);
     const selections = this.state.selections.map(s => selected);
     this.setState({ selections });
   }
@@ -162,6 +167,24 @@ class DataSheetRoot extends Component {
     const selections = [...this.state.selections];
     selections[index] = selected;
     this.setState({ selections });
+  }
+
+  handleColumnDrop(from, to) {
+    console.log('sdsdsd');
+    const columns = [...this.state.columns];
+    columns.splice(to, 0, ...columns.splice(from, 1));
+    const grid = this.state.grid.map(r => {
+      const row = [...r];
+      row.splice(to, 0, ...row.splice(from, 1));
+      return row;
+    });
+    this.setState({ columns, grid });
+  }
+
+  handleRowDrop(from, to) {
+    const grid = [...this.state.grid];
+    grid.splice(to, 0, ...grid.splice(from, 1));
+    this.setState({ grid });
   }
 
   handleCellsChanged(changes, additions) {
@@ -202,7 +225,7 @@ class DataSheetRoot extends Component {
         headerAs="div" bodyAs="div" rowAs="div" cellAs="div" {...props} />);
     default:
       return (<SheetRenderer columns={columns} selections={selections}
-        onSelectAllChanged={this.handleSelectAllChanged} as="table"
+        onSelectAllChanged={this.handleSelectAllChanged} onColumnDrop={this.handleColumnDrop} as="table"
         headerAs="thead" bodyAs="tbody" rowAs="tr" cellAs="th" {...props} />);
     }
   }
@@ -212,13 +235,14 @@ class DataSheetRoot extends Component {
     switch (this.state.as) {
     case 'list':
       return (<RowRenderer as="li" cellAs="div" selected={selections[props.row]}
-        onSelectChanged={this.handleSelectChanged} className="dataRow" {...props} />);
+        onSelectChanged={this.handleSelectChanged} className={`${styles.dataRow}`} {...props} />);
     case 'div':
       return (<RowRenderer as="div" cellAs="div" selected={selections[props.row]}
-        onSelectChanged={this.handleSelectChanged} className="dataRow" {...props} />);
+        onSelectChanged={this.handleSelectChanged} className={`${styles.dataRow}`} {...props} />);
     default:
       return (<RowRenderer as="tr" cellAs="td" selected={selections[props.row]}
-        onSelectChanged={this.handleSelectChanged} className="dataRow" {...props} />);
+        onSelectChanged={this.handleSelectChanged} rowIndex={props.row}
+        onRowDrop={this.handleRowDrop} className={`${styles.dataRow}`} {...props} />);
     }
   }
 
@@ -235,40 +259,42 @@ class DataSheetRoot extends Component {
 
   render() {
     return (
-      <div>
-        <Fragment>
-          <label>
-            Render with:&nbsp;
-            <select value={this.state.as} onChange={this.handleSelect}>
-              <option value="table">Table</option>
-              <option value="list">List</option>
-              <option value="div">Div</option>
-            </select>
-          </label>
-        </Fragment>
+      <DragDropContextProvider backend={HTML5Backend}>
+        <div>
+          <Fragment>
+            <label>
+              Render with:&nbsp;
+              <select value={this.state.as} onChange={this.handleSelect}>
+                <option value="table">Table</option>
+                <option value="list">List</option>
+                <option value="div">Div</option>
+              </select>
+            </label>
+          </Fragment>
 
-        <DataSheet
-          data={this.state.grid}
-          sheetRenderer={this.sheetRenderer}
-          headerRenderer={this.headerRenderer}
-          bodyRenderer={this.bodyRenderer}
-          rowRenderer={this.rowRenderer}
-          cellRenderer={this.cellRenderer}
-          onCellsChanged={this.handleCellsChanged}
-          valueRenderer={(cell) => cell.value}
-        />
+          <DataSheet
+            data={this.state.grid}
+            sheetRenderer={this.sheetRenderer}
+            headerRenderer={this.headerRenderer}
+            bodyRenderer={this.bodyRenderer}
+            rowRenderer={this.rowRenderer}
+            cellRenderer={this.cellRenderer}
+            onCellsChanged={this.handleCellsChanged}
+            valueRenderer={(cell) => cell.value}
+          />
 
-        <Fragment>
-          <label>
-            Render with:&nbsp;
-            <select value={this.state.as} onChange={this.handleSelect}>
-              <option value="table">Table</option>
-              <option value="list">List</option>
-              <option value="div">Div</option>
-            </select>
-          </label>
-        </Fragment>
-      </div>
+          <Fragment>
+            <label>
+              Render with:&nbsp;
+              <select value={this.state.as} onChange={this.handleSelect}>
+                <option value="table">Table</option>
+                <option value="list">List</option>
+                <option value="div">Div</option>
+              </select>
+            </label>
+          </Fragment>
+        </div>
+      </DragDropContextProvider>
     );
   }
 }

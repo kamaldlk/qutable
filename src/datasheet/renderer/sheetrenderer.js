@@ -1,25 +1,41 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../css/datasheet.css';
+import { colDragSource, colDropTarget } from '../dnd/drag.drop';
+
+const HeaderData = colDropTarget(colDragSource((props) => {
+  const { col, connectDragSource, connectDropTarget, isOver } = props;
+  const className = isOver ? styles.cell + " " + styles.readOnly + " " +
+  styles.dropTarget : styles.cell + " " + styles.readOnly;
+  return connectDropTarget(
+    connectDragSource(
+      <th className={className} style={{ width: col.Width + 'px' }}>{col.Name}</th>
+    ));
+}));
 
 const SheetRenderer = props => {
   const { as: Tag, headerAs: Header, bodyAs: Body, rowAs: Row, cellAs: Cell,
-    className, columns, selections, onSelectAllChanged } = props;
+    className, columns, selections, onSelectAllChanged, onColumnDrop } = props;
   return (
     <Tag className={className}>
-      <Header className="dataHeader">
+      <Header className={`${styles.dataHeader}`}>
         <Row>
-          <Cell className="actionCell cell">
+          <Cell className={`${styles.actionCell} ${styles.cell}`}>
             <input
               type="checkbox"
               checked={selections.every(s => s)}
               onChange={e => onSelectAllChanged(e.target.checked)}
             />
           </Cell>
-          {columns.map(column => <Cell className="cell" style={{ width: column.Width + 'px' }} key={column.Name}>{column.Name}</Cell>)}
+          {
+            columns.map((col, index) => (
+              <HeaderData key={col.Name} col={col} columnIndex={index} onColumnDrop={onColumnDrop} />
+            ))
+          }
         </Row>
       </Header>
-      <Body className="dataBody">
+      <Body className={`${styles.dataBody}`}>
         {props.children}
       </Body>
     </Tag>
@@ -41,7 +57,8 @@ SheetRenderer.propTypes = {
   selected: PropTypes.bool,
   onSelectAllChanged: PropTypes.func,
   columns: PropTypes.array.isRequired,
-  selections: PropTypes.array
+  selections: PropTypes.array,
+  onColumnDrop: PropTypes.func
 };
 
 export default SheetRenderer;

@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import CellShape from './cell.shape';
-
+import styles from '../css/datasheet.css';
 export default class ValueViewer extends PureComponent {
   render() {
     const { value } = this.props;
     return (
-      <span className="valueViewer">
+      <span className={`${styles.valueViewer}`}>
         {value}
       </span>
     );
