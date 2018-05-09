@@ -1,6 +1,8 @@
 
-import React from 'react';
+import React, { PureComponent } from 'react';
+import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
+import ColumnResizer from "./column.resize";
 import styles from '../css/datasheet.css';
 import { colDragSource, colDropTarget } from '../dnd/drag.drop';
 
@@ -14,35 +16,93 @@ const HeaderData = colDropTarget(colDragSource((props) => {
     ));
 }));
 
-const SheetRenderer = props => {
-  const { as: Tag, headerAs: Header, bodyAs: Body, rowAs: Row, cellAs: Cell,
-    className, columns, selections, onSelectAllChanged, onColumnDrop } = props;
-  return (
-    <Tag className={className}>
-      <Header className={`${styles.dataHeader}`}>
-        <Row>
-          <Cell className={`${styles.actionCell} ${styles.cell}`}>
-            <input
-              type="checkbox"
-              checked={selections.every(s => s)}
-              onChange={e => onSelectAllChanged(e.target.checked)}
-            />
-          </Cell>
-          {
-            columns.map((col, index) => (
-              <HeaderData key={col.Name} col={col} columnIndex={index} onColumnDrop={onColumnDrop} />
-            ))
-          }
-        </Row>
-      </Header>
-      <Body className={`${styles.dataBody}`}>
-        {props.children}
-      </Body>
-    </Tag>
-  );
-};
+export default class SheetRenderer extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
+  componentDidMount() {
+    //const resizer = document.querySelectorAll(".table");
+    const resizer = new ColumnResizer(document.getElementById("mytable"), {
+      liveDrag: true,
+      resizeMode: 'overflow'
+    });
+    console.log('resizer', resizer);
+    if (this.props.resizable) {
+      this.enableResize();
+    }
+  }
+  componentWillUpdate() {
+    if (this.props.resizable) {
+      this.disableResize();
+    }
+  }
+  componentDidUpdate() {
+    if (this.props.resizable) {
+      this.enableResize();
+    }
+  }
+  componentWillUnmount() {
+    if (this.props.resizable) {
+      this.disableResize();
+    }
+  }
 
+  enableResize() {
+    const normalRemote = ReactDOM.findDOMNode(this).querySelector(
+      `#${this.bodyId}`
+    );
+    const options = this.props.resizerOptions;
+    options.remoteTable = normalRemote;
+    if (!this.resizer) {
+      this.resizer = new ColumnResizer(
+        ReactDOM.findDOMNode(this).querySelector(`#${this.headerId}`),
+        options
+      );
+    } else {
+      this.resizer.reset(options);
+    }
+  }
+
+  disableResize() {
+    if (this.resizer) {
+      // This will return the current state of the
+      // options including column widths.
+      // These widths can be saved so the table
+      // can be initialized with them.
+      this.resizer.reset({ disable: true });
+    }
+  }
+
+  render() {
+    const { as: Tag, headerAs: Header, bodyAs: Body, rowAs: Row, cellAs: Cell,
+      className, columns, selections, onSelectAllChanged, onColumnDrop } = this.props;
+    return (
+      <Tag className={className} id="mytable">
+        <Header className={`${styles.dataHeader}`}>
+          <Row>
+            <Cell className={`${styles.actionCell} ${styles.cell}`}>
+              <input
+                type="checkbox"
+                checked={selections.every(s => s)}
+                onChange={e => onSelectAllChanged(e.target.checked)}
+              />
+            </Cell>
+            {
+              columns.map((col, index) => (
+                <HeaderData key={col.Name} col={col} columnIndex={index} onColumnDrop={onColumnDrop} />
+              ))
+            }
+          </Row>
+        </Header>
+        <Body className={`${styles.dataBody}`}>
+          {this.props.children}
+        </Body>
+      </Tag>
+    );
+  }
+}
 SheetRenderer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.element,
@@ -58,7 +118,7 @@ SheetRenderer.propTypes = {
   onSelectAllChanged: PropTypes.func,
   columns: PropTypes.array.isRequired,
   selections: PropTypes.array,
-  onColumnDrop: PropTypes.func
+  onColumnDrop: PropTypes.func,
+  resizable: PropTypes.bool,
+  resizerOptions: PropTypes.object
 };
-
-export default SheetRenderer;
