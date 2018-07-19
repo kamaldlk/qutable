@@ -1,4 +1,4 @@
-import React, { Component, Fragment, PureComponent} from 'react';
+import React, { Component, Fragment, PureComponent } from 'react';
 import './App.css';
 import DataSheet from './spreadsheet/DataSheet';
 import './spreadsheet/react-datasheet.css';
@@ -8,6 +8,7 @@ import Select from 'react-select'
 import { ENTER_KEY, TAB_KEY } from './spreadsheet/keys';
 import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
+import rows from './rows.json'
 
 const SheetRenderer = props => {
   const { as: Tag, headerAs: Header, bodyAs: Body, rowAs: Row, cellAs: Cell,
@@ -34,9 +35,14 @@ const SheetRenderer = props => {
 }
 
 const RowRenderer = props => {
-  const { as: Tag, cellAs: Cell, className, row, selected, onSelectChanged } = props
+  const { as: Tag, cellAs: Cell, className, row, selected, onSelectChanged, rowHeight, cells } = props
+  console.log('cells: ', cells);
+
+  console.log('rowHeight: ', rowHeight);
+  console.log('row: ', row);
+  console.log('rowHeight*row: ', rowHeight*row);
   return (
-    <Tag className={className}>
+    <Tag className={className} style={{position: 'absolute', top: rowHeight*cells[0].value}}>
       <Cell className='action-cell cell'>
         <input
           type='checkbox'
@@ -128,6 +134,8 @@ class App extends Component {
     this.handleSelectAllChanged = this.handleSelectAllChanged.bind(this)
     this.handleSelectChanged = this.handleSelectChanged.bind(this)
     this.handleCellsChanged = this.handleCellsChanged.bind(this)
+    this.onScroll = this.onScroll.bind(this)
+    this.rowHeight = this.rowHeight.bind(this)
 
     this.sheetRenderer = this.sheetRenderer.bind(this)
     this.rowRenderer = this.rowRenderer.bind(this)
@@ -176,78 +184,14 @@ class App extends Component {
           "Width": 300
         }
       ],
-      "Table::Employee": [
-        {
-          "Id": 1,
-          "priority": "OrangeRed",
-          "issueType": "Major",
-          "task": "Task 1",
-          "complete": 100,
-          "taskInfo": "Test",
-          "startDate": "Sun May 08 2016 13:59:24 GMT+0530 (IST)"
-        },
-        {
-          "Id": 2,
-          "priority": "OrangeRed",
-          "issueType": "Major",
-          "task": "Task 1",
-          "complete": 100,
-          "taskInfo": "Test",
-          "startDate": "Sun May 08 2016 13:59:24 GMT+0530 (IST)"
-        },
-        {
-          "Id": 3,
-          "priority": "OrangeRed",
-          "issueType": "Major",
-          "task": "Task 1",
-          "complete": 100,
-          "taskInfo": "Test",
-          "startDate": "Sun May 08 2016 13:59:24 GMT+0530 (IST)"
-        },
-        {
-          "Id": 4,
-          "priority": "OrangeRed",
-          "issueType": "Major",
-          "task": "Task 1",
-          "complete": 100,
-          "taskInfo": "Test",
-          "startDate": "Sun May 08 2016 13:59:24 GMT+0530 (IST)"
-        },
-        {
-          "Id": 5,
-          "priority": "OrangeRed",
-          "issueType": "Major",
-          "task": "Task 1",
-          "complete": 100,
-          "taskInfo": "Test",
-          "startDate": "Sun May 08 2016 13:59:24 GMT+0530 (IST)"
-        },
-        {
-          "Id": 6,
-          "priority": "OrangeRed",
-          "issueType": "Major",
-          "task": "Task 1",
-          "complete": 100,
-          "taskInfo": "Test",
-          "startDate": "Sun May 08 2016 13:59:24 GMT+0530 (IST)"
-        },
-        {
-          "Id": 7,
-          "priority": "OrangeRed",
-          "issueType": "Major",
-          "task": "Task 1",
-          "complete": 100,
-          "taskInfo": "Test",
-          "startDate": "Sun May 08 2016 13:59:24 GMT+0530 (IST)"
-        }
-      ]
+      "Table::Employee": rows
     }
     const tableName = 'Table::Employee';
     const grid = [
       ...this.data[tableName].map(row => {
         let rowData = []
         let index = 0;
-        for(let key in row) {
+        for (let key in row) {
           rowData.push({
             value: row[key] || '',
             width: this.data.Columns[index].Width,
@@ -265,10 +209,59 @@ class App extends Component {
       as: 'table',
       columns: this.data.Columns,
       grid: grid,
+      visiblegrid: grid.slice(0, 20),
       selections: [false, false, false, false, false, false, false]
     }
   }
+
+  componentDidMount() {
+    this.container.addEventListener('scroll', this.debounce(this.onScroll, 32));
+  }
   
+  componentWillUnmount() {
+    this.container.removeEventListener('scroll', this.onScroll);
+  }
+
+  debounce = (func, wait) => {
+    let timeout
+
+    return (...args) => {
+      clearTimeout(timeout)
+      timeout = setTimeout(() => func.apply(this, args), wait)
+    }
+  }
+
+  // onScroll(args) {
+  //   console.log('args: ', args);
+
+  // }
+
+  onScroll() {
+    console.log('kbt now ', new Date())
+    console.log('rowHeightValue', this.rowHeightValue);
+    let scrollTop = this.container.scrollTop
+    console.log('scrollTop: ', scrollTop);
+    let height = this.container.offsetHeight
+    let r = Math.round;
+    let startSplice = r(scrollTop / this.rowHeightValue);
+    startSplice -= 5;
+    startSplice = startSplice < 0 ? 0 : startSplice;
+    console.log('startSplice: ', startSplice);
+    var noOfRowsInView = r(height/this.rowHeightValue);
+    console.log('noOfRowsInView: ', noOfRowsInView);
+
+    this.setState(prevState => {
+      let visiblegrid = prevState.grid.slice(startSplice, startSplice + noOfRowsInView + 10);
+      console.log('visiblegrid: ', visiblegrid);
+      return { visiblegrid }
+  });
+  }
+
+  rowHeight(height) {
+    console.log('height: ', height);
+    this.rowHeightValue = height;
+  }
+
   handleSelect(e) {
     this.setState({ as: e.target.value })
   }
@@ -290,13 +283,13 @@ class App extends Component {
       grid[row][col] = { ...grid[row][col], value }
     })
     // paste extended beyond end, so add a new row
-    if (additions){
+    if (additions) {
       additions.forEach(({ cell, row, col, value }) => {
         if (!grid[row]) {
           let emptyData = [];
           for (let i = 0; i < this.state.columns.length; i++) {
             emptyData.push({
-              value:''
+              value: ''
             })
           }
           grid[row] = emptyData
@@ -306,7 +299,7 @@ class App extends Component {
         }
       })
     }
-    
+
     this.setState({ grid })
   }
   sheetRenderer(props) {
@@ -345,7 +338,7 @@ class App extends Component {
   }
 
   render() {
-   
+
     return (
       <div>
         <Fragment>
@@ -358,18 +351,22 @@ class App extends Component {
             </select>
           </label>
         </Fragment>
-
-        <DataSheet
-          data={this.state.grid}
-          className='custom-sheet'
-          sheetRenderer={this.sheetRenderer}
-          headerRenderer={this.headerRenderer}
-          bodyRenderer={this.bodyRenderer}
-          rowRenderer={this.rowRenderer}
-          cellRenderer={this.cellRenderer}
-          onCellsChanged={this.handleCellsChanged}
-          valueRenderer={(cell) => cell.value}
-        />
+        <div className="container" ref={input => { this.container = input }}>
+          <div className="wrapper" style={{height: this.rowHeightValue ? (this.state.grid.length * this.rowHeightValue) : '300px'}}>
+            <DataSheet
+              data={this.state.visiblegrid}
+              className='custom-sheet'
+              sheetRenderer={this.sheetRenderer}
+              headerRenderer={this.headerRenderer}
+              bodyRenderer={this.bodyRenderer}
+              rowRenderer={this.rowRenderer}
+              cellRenderer={this.cellRenderer}
+              onCellsChanged={this.handleCellsChanged}
+              valueRenderer={(cell) => cell.value}
+              rowHeight = {this.rowHeight}
+            />
+          </div>
+        </div>
 
         <Fragment>
           <label>

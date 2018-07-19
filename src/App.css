@@ -55,3 +55,12 @@ html,body{
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.container{
+  height: 300px;
+  overflow: auto;
+}
+
+.container .wrapper{
+  position: relative;
+}

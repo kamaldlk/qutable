@@ -71,6 +71,10 @@ export default class DataSheet extends PureComponent {
     // Add listener scoped to the DataSheet that catches otherwise unhandled
     // keyboard events when displaying components
     this.dgDom && this.dgDom.addEventListener('keydown', this.handleComponentKey)
+
+    let rowHeight = this.dgDom.firstChild.lastChild.firstChild.clientHeight;
+    this.props.rowHeight(rowHeight);
+    this.setState({rowHeight})
   }
 
   componentWillUnmount () {
@@ -456,42 +460,42 @@ export default class DataSheet extends PureComponent {
     console.log('overflow', overflow);
     return (
       <div ref={r => { this.dgDom = r }} tabIndex='0' className='data-grid-container' onKeyDown={this.handleKey}>
-        <SheetRenderer data={data} className={['data-grid', className, overflow].filter(a => a).join(' ')}>
-          {data.map((row, i) =>
-            <RowRenderer key={keyFn ? keyFn(i) : i} row={i} cells={row}>
-              {
-                row.map((cell, j) => {
-                  return (
-                    <DataCell
-                      key={cell.key ? cell.key : `${i}-${j}`}
-                      row={i}
-                      col={j}
-                      cell={cell}
-                      forceEdit={forceEdit}
-                      onMouseDown={this.onMouseDown}
-                      onMouseOver={this.onMouseOver}
-                      onDoubleClick={this.onDoubleClick}
-                      onContextMenu={this.onContextMenu}
-                      onChange={this.onChange}
-                      onRevert={this.onRevert}
-                      onNavigate={this.handleKeyboardCellMovement}
-                      onKey={this.handleKey}
-                      selected={this.isSelected(i, j)}
-                      editing={this.isEditing(i, j)}
-                      clearing={this.isClearing(i, j)}
-                      attributesRenderer={attributesRenderer}
-                      cellRenderer={cellRenderer}
-                      valueRenderer={valueRenderer}
-                      dataRenderer={dataRenderer}
-                      valueViewer={valueViewer}
-                      dataEditor={dataEditor}
-                    />
-                  )
-                })
+            <SheetRenderer data={data} className={['data-grid', className, overflow].filter(a => a).join(' ')}>
+              {data.map((row, i) =>
+                <RowRenderer key={keyFn ? keyFn(i) : i} row={i} cells={row} rowHeight={this.state.rowHeight}>
+                  {
+                    row.map((cell, j) => {
+                      return (
+                        <DataCell
+                        key={cell.key ? cell.key : `${i}-${j}`}
+                        row={i}
+                        col={j}
+                        cell={cell}
+                        forceEdit={forceEdit}
+                        onMouseDown={this.onMouseDown}
+                        onMouseOver={this.onMouseOver}
+                        onDoubleClick={this.onDoubleClick}
+                        onContextMenu={this.onContextMenu}
+                        onChange={this.onChange}
+                        onRevert={this.onRevert}
+                        onNavigate={this.handleKeyboardCellMovement}
+                        onKey={this.handleKey}
+                        selected={this.isSelected(i, j)}
+                        editing={this.isEditing(i, j)}
+                        clearing={this.isClearing(i, j)}
+                        attributesRenderer={attributesRenderer}
+                        cellRenderer={cellRenderer}
+                        valueRenderer={valueRenderer}
+                        dataRenderer={dataRenderer}
+                        valueViewer={valueViewer}
+                        dataEditor={dataEditor}
+                        />
+                      )
+                    })
+                  }
+                </RowRenderer>)
               }
-            </RowRenderer>)
-          }
-        </SheetRenderer>
+            </SheetRenderer>
       </div>
     )
   }
