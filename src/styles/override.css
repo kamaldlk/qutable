@@ -1,0 +1,68 @@
+/* frola editor overrie */
+
+.fr-toolbar{
+  border-top: none !important;
+  border-bottom: 1px solid rgb(var(--pale-grey)) !important;
+}
+
+.fr-toolbar,
+.fr-wrapper{
+  box-shadow: unset !important;
+}
+
+.fr-toolbar .fr-command.fr-btn, .fr-popup .fr-command.fr-btn{
+  min-width: auto;
+}
+
+.fr-popup{
+  z-index: 1001 !important;
+}
+/* frola override ends */
+
+/* overwrite the emoji css */
+.emoji-mart {
+  border: none !important;
+}
+.emoji-mart-preview {
+  display: none;
+}
+
+
+
+/* Modal route override */
+/* #modal-root {
+  position: relative;
+  z-index: 999;
+}
+.modal {
+  background: rgba(var(--dark-gray), 0.8);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* ends */
+
+/* make the svg center inside span tag */
+/* signature component override css */
+#signature-pad, .m-signature-pad--body{
+  height: 8rem;
+}
+
+/* override for strong tag css */
+strong {
+  font-weight: 600;
+}
+
+/* for grammarly remove */
+grammarly-ghost {
+  display: none;
+}
+
+grammarly-btn {
+  display: none;
+}

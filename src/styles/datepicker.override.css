@@ -1,0 +1,121 @@
+.DayPickerInput,
+.DayPickerInput > input {
+  width: 100%;
+  height: 100%;
+}
+.DayPickerInput > input {
+  border: none;
+}
+.DayPickerInput-Overlay {
+  height: 34rem;
+}
+.DayPicker,
+.DayPicker-Month {
+  width: 30rem;
+}
+.DayPicker-Caption {
+  height: 4rem;
+  border-bottom: 1px solid #ddd;
+  text-align: center !important;
+  margin-bottom: 1rem !important;
+}
+.DayPicker-Months  {
+  height: 29rem;
+}
+.DayPicker-Month {
+  margin-bottom: 1rem !important;
+  margin: 0rem !important;
+  height: 23rem;
+}
+.DayPicker {
+  border-right: 1px solid #ddd;
+}
+.DayPicker-Caption select[name="month"] {
+  width: 11.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+}
+.DayPicker-Caption select[name="year"] {
+  width: 7.5rem;
+  height: 2.5rem;
+}
+.DayPicker-Caption select[name="month"],
+.DayPicker-Caption select[name="year"] {
+  margin: 0.7rem 0.5rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.DayPicker-Day {
+  /* width: 3.5rem; */
+ /* height: 28px;*/
+  padding: 0 !important;
+}
+.DayPicker-Day--today,
+.DayPicker-Day--selected {
+/*width: 28px;
+  height: 28px;*/
+  /* border-radius: 20px;
+  background-color: #e6eaee; */
+  border: solid 1px rgb(var(--primary-left-light15));
+  border-radius: 3px;
+  color: initial;
+  /* color: #000 !important; */
+}
+.DayPicker-Day--selected {
+  background-color: var(--primary-background) !important;
+  color: var(--white) !important;
+}
+.DayPicker:not(.DayPicker--interactionDisabled)
+.DayPicker-Day:not(.DayPicker-Day--disabled)
+:not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover{
+  background: none;
+  border-radius: 0;
+}
+
+.DayPicker:not(.DayPicker--interactionDisabled)
+.DayPicker-Day:not(.DayPicker-Day--disabled)
+:not(.DayPicker-Day--selected):not(.DayPicker-Day--outside) > div:hover{
+  background: rgb(var(--white));
+  border-radius: 3px;
+}
+
+.DayPicker-Weekday {
+  color: #000 !important;
+  font-size: 1.3rem !important;
+  font-weight: 600;
+}
+.DayPicker-TodayButton {
+  margin: 1rem;
+}
+.DayPicker-Footer {
+  height: 5rem;
+  text-align: center;
+  padding: 0 !important;
+  border-top: 1px solid #ddd;
+}
+.DayPicker-TodayButton {
+    width: 10rem;
+    height: 3rem;
+    border: 1px solid #37b148 !important;
+    color: #37b148 !important;
+    line-height: unset;
+}
+.DayPicker-NavBar > div {
+  font-weight: 300;
+  line-height: 4rem;
+  cursor: pointer;
+  font-size: 2.3rem;
+  color: #505978;
+  position: absolute;
+}
+.DayPicker-NavBar > div:first-child {
+  left: 1.5rem;
+}
+.DayPicker-NavBar > div:nth-child(2) {
+  right: 1.5rem;
+}
+
+
+
+
+

@@ -1,0 +1,47 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(5rem, 1fr));
+  grid-column-gap: var(--space-16);
+}
+
+.s1 {
+  grid-column-start: 1;
+}
+
+.s2 {
+  grid-column-start: 2;
+}
+.s3 {
+  grid-column-start: 3;
+}
+.s4 {
+  grid-column-start: 4;
+}
+.s5 {
+  grid-column-start: 5;
+}
+
+.s6 {
+  grid-column-start: 6;
+}
+
+.e1{
+  grid-column-end: span 1
+}
+.e2{
+  grid-column-end: span 2
+}
+.e3{
+  grid-column-end: span 3
+}
+.e4{
+  grid-column-end: span 4
+}
+.e5{
+  grid-column-end: span 5
+}
+.e6{
+  grid-column-end: span 6
+}
+
+

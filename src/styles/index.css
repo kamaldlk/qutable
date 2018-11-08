@@ -1,0 +1,166 @@
+@import 'variable.css';
+@import 'gridlayout.css';
+@import 'override.css';
+@import 'font.css';
+
+html {
+  font-size: 10px;
+}
+
+body,
+.marutham-body{
+  font-family: var(--marutham-font-family);
+  font-size: var(--marutham-font-size);
+  font-weight: var(--marutham-font-weight);
+  line-height: var(--marutham-line-height);
+  letter-spacing: var(--marutham-letter-spacing);
+  color: var(--marutham-color);
+}
+
+#root {
+  height: 100%;
+}
+
+button{
+  font-family:inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+.rootContainer {
+  height: 100%;
+  overflow: hidden;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+          line-clamp: 3;
+  -webkit-box-orient: vertical;
+          box-orient: vertical;
+}
+
+@media only screen and (min-width:1600px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+*:focus:not(:focus-visible) { outline: none }
+
+.kondrai-h1 {
+  font-size: var(--kondrai-font-size);
+  font-weight: var(--kondrai-font-weight);
+  line-height: var(--kondrai-line-height);
+  letter-spacing: var(--kondrai-letter-spacing);
+}
+.tamarai-h2 {
+  font-size: var(--tamarai-font-size);
+  font-weight: var(--tamarai-font-weight);
+  line-height: var(--tamarai-line-height);
+  letter-spacing: var(--tamarai-letter-spacing);
+}
+.ambal-h3 {
+  font-size: var(--ambal-font-size);
+  font-weight: var(--ambal-font-weight);
+  line-height: var(--ambal-line-height);
+  letter-spacing: var(--ambal-letter-spacing);
+}
+.kulavai-h4 {
+  font-size: var(--kulavai-font-size);
+  font-weight: var(--kulavai-font-weight);
+  line-height : var(--kulavai-line-height);
+  letter-spacing: var(--kulavai-letter-spacing);
+}
+.thavalam-h5 {
+  font-size: var(--thavalam-font-size);
+  font-weight: var(--thavalam-font-weight);
+  line-height: var(--thavalam-line-height);
+  letter-spacing: var(--thavalam-letter-spacing);
+}
+.kurinci-heading {
+  font-size: var(--kurinci-font-size);
+  font-weight: var(--kurinci-font-weight);
+  line-height: var(--kurinci-line-height);
+  letter-spacing: var(--kurinci-letter-spacing);
+}
+.chemmal-h6, h6 {
+  font-size: var(--chemmal-font-size);
+  font-weight: var(--chemmal-font-weight);
+  line-height: var(--chemmal-line-height);
+  letter-spacing: var(--chemmal-letter-spacing);
+}
+.sulli-input, input {
+  font-family: var(--sulli-font-family);
+  font-size: var(--sulli-font-size);
+  font-weight: var(--sulli-font-weight);
+  line-height: var(--sulli-line-height);
+  letter-spacing: var(--sulli-letter-spacing);
+}
+
+.thilakam-placeholder,.sulli-input::placeholder {
+  font-size: var(--thilakam-font-size);
+  font-weight: var(--thilakam-font-weight);
+  line-height: var(--thilakam-line-height);
+  letter-spacing: var(--thilakam-letter-spacing);
+  color: var(--thilakam-color);
+}
+
+.marutham-link {
+  font-size: var(--marutham-link-font-size);
+  font-weight: var(--marutham-link-font-weight);
+  line-height: var(--marutham-link-line-height);
+  letter-spacing: var(--marutham-link-letter-spacing);
+  color: var(--marutham-link-color);
+}
+
+.punnai-label {
+  font-size: var(--punnai-font-size);
+  font-weight: var(--punnai-font-weight);
+  line-height: var(--punnai-line-height);
+  letter-spacing: var(--punnai-letter-spacing);
+  color: var(--punnai-color);
+}
+.kuravam-small {
+  font-size: var(--kuravam-font-size);
+  font-weight: var(--kuravam-font-weight);
+  line-height: var(--kuravam-line-height);
+  letter-spacing: var(--kuravam-letter-spacing);
+  color: var(--kuravam-color);
+}
+.sural-tiny {
+  font-size: var(--sural-font-size);
+  font-weight: var(--sural-font-weight);
+  line-height: var(--sural-line-height);
+  letter-spacing: var(--sural-letter-spacing);
+  color: var(--sural-color);
+}
+
+.thumbai {
+  font-size: var(--thumbai-font-size);
+  font-weight: var(--thumbai-font-weight);
+  line-height: var(--thumbai-line-height);
+  letter-spacing: var(--thumbai-letter-spacing);
+}
+
+.pdf, .ppt {
+  background: rgb(var(--secondary-4-main));
+  color: rgb(var(--white));
+}
+.xls {
+  background: rgb(var(--primary-right-main));
+  color: rgb(var(--white));
+}
+.doc, .txt {
+  background: rgb(var(--secondary-6-main));
+  color: rgb(var(--white));
+}
+.mp3 {
+  background: rgb(var(--secondary-3-main));
+  color: rgb(var(--white));
+}

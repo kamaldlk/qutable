@@ -1,0 +1,24 @@
+<svg width="9px" height="29px" viewBox="0 0 9 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Actualisation-v2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-15.000000, -262.000000)" fill="#D8D8D8">
+            <g id="Interactions" transform="translate(15.000000, 258.000000)">
+                <g id="Row-Controls" transform="translate(0.000000, 2.000000)">
+                    <g id="drag-icon" transform="translate(0.000000, 2.000000)">
+                        <circle id="Oval-30" cx="2" cy="2" r="1.5"></circle>
+                        <circle id="Oval-30" cx="6.5" cy="2" r="1.5"></circle>
+                        <circle id="Oval-30" cx="2" cy="6.5" r="1.5"></circle>
+                        <circle id="Oval-30" cx="6.5" cy="6.5" r="1.5"></circle>
+                        <circle id="Oval-30" cx="2" cy="11.5" r="1.5"></circle>
+                        <circle id="Oval-30" cx="6.5" cy="11.5" r="1.5"></circle>
+                        <circle id="Oval-30" cx="2" cy="16.5" r="1.5"></circle>
+                        <circle id="Oval-30" cx="6.5" cy="16.5" r="1.5"></circle>
+                        <circle id="Oval-30" cx="2" cy="21.5" r="1.5"></circle>
+                        <circle id="Oval-30" cx="6.5" cy="21.5" r="1.5"></circle>
+                        <circle id="Oval-30" cx="2" cy="26.5" r="1.5"></circle>
+                        <circle id="Oval-30" cx="6.5" cy="26.5" r="1.5"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

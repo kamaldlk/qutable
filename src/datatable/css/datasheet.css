@@ -1,0 +1,408 @@
+
+.fixedDataTableCellGroupLayoutCellGroup {
+  backface-visibility: hidden;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.fixedDataTableCellGroupLayoutCellGroup > .publicFixedDataTableCellMain {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+}
+
+.fixedDataTableCellGroupLayoutCellGroupWrapper {
+  position: absolute;
+  top: 0;
+}
+
+.fixedDataTableCellLayoutMain {
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-width: 0 1px 0 0;
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  white-space: normal;
+}
+
+.fixedDataTableCellLayoutLastChild {
+  border-width: 0 1px 1px 0;
+}
+
+.fixedDataTableCellLayoutAlignRight {
+  text-align: right;
+}
+
+.fixedDataTableCellLayoutAlignCenter {
+  text-align: center;
+}
+
+.fixedDataTableCellLayoutWrap1 {
+  display: table;
+}
+
+.fixedDataTableCellLayoutWrap2 {
+  display: table-row;
+}
+
+.fixedDataTableCellLayoutWrap3 {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.fixedDataTableCellLayoutColumnResizerContainer {
+  position: absolute;
+  right: 0px;
+  width: 6px;
+  z-index: 1;
+}
+
+.fixedDataTableCellLayoutColumnResizerContainer:hover {
+  cursor: ew-resize;
+}
+
+.fixedDataTableCellLayoutColumnResizerContainer:hover .fixedDataTableCellLayoutColumnResizerKnob {
+  visibility: visible;
+}
+
+.fixedDataTableCellLayoutColumnResizerKnob {
+  position: absolute;
+  right: 0px;
+  visibility: hidden;
+  width: 4px;
+}
+
+
+.fixedDataTableColumnResizerLineLayoutMouseArea {
+  cursor: ew-resize;
+  position: absolute;
+  right: -5px;
+  width: 12px;
+}
+
+.fixedDataTableColumnResizerLineLayoutMain {
+  border-right-style: solid;
+  border-right-width: 1px;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 10;
+}
+
+body[dir="rtl"] .fixedDataTableColumnResizerLineLayoutMain {
+  display: none !important;
+}
+
+.fixedDataTableColumnResizerLineLayoutHiddenElem {
+  display: none !important;
+}
+
+
+.fixedDataTableLayoutMain {
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.fixedDataTableLayoutHeader,
+.fixedDataTableLayoutHasBottomBorder {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.fixedDataTableLayoutFooter .publicFixedDataTableCellMain {
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.fixedDataTableLayoutTopShadow,
+.fixedDataTableLayoutBottomShadow {
+  height: 4px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.fixedDataTableLayoutBottomShadow {
+  margin-top: -4px;
+}
+
+.fixedDataTableLayoutRowsContainer {
+  overflow: hidden;
+  position: relative;
+}
+
+.fixedDataTableLayoutHorizontalScrollbar {
+  bottom: 0;
+  position: absolute;
+}
+
+.fixedDataTableRowLayoutMain {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+
+.fixedDataTableRowLayoutBody {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.fixedDataTableRowLayoutRowExpanded {
+  box-sizing: border-box;
+  left: 0;
+  position: absolute;
+}
+
+.fixedDataTableRowLayoutFixedColumnsDivider {
+  backface-visibility: hidden;
+  border-left-style: solid;
+  border-left-width: 1px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+
+.fixedDataTableRowLayoutColumnsShadow {
+  position: absolute;
+  width: 4px;
+}
+
+.fixedDataTableRowLayoutColumnsRightShadow {
+  right: 1px;
+}
+
+.fixedDataTableRowLayoutRowWrapper {
+  position: absolute;
+  top: 0;
+}
+
+
+.ScrollbarLayoutMain {
+  box-sizing: border-box;
+  outline: none;
+  overflow: hidden;
+  position: absolute;
+  user-select: none;
+}
+
+.ScrollbarLayoutMainVertical {
+  bottom: 0;
+  right: 0;
+  top: 0;
+  width: var(--scrollbar-size);
+}
+
+.ScrollbarLayoutMainHorizontal {
+  bottom: 0;
+  height: var(--scrollbar-size);
+  left: 0;
+  transition-property: background-color height;
+}
+
+/* Touching the scroll-track directly makes the scroll-track bolder */
+.ScrollbarLayoutMainHorizontal .publicScrollbarMainActive,
+.ScrollbarLayoutMainHorizontal:hover {
+  height: var(--scrollbar-size-large);
+}
+
+.ScrollbarLayoutFace {
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+  transition-property: background-color width position;
+}
+
+.ScrollbarLayoutFace:after {
+  border-radius: var(--scrollbar-face-radius);
+  content: '';
+  display: block;
+  position: absolute;
+  transition: background-color 250ms ease;
+}
+
+.ScrollbarLayoutFaceHorizontal {
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+
+.ScrollbarLayoutFaceHorizontal:after {
+  bottom: var(--scrollbar-face-margin);
+  left: 0;
+  top: var(--scrollbar-face-margin);
+  width: 100%;
+}
+
+.ScrollbarLayoutFaceHorizontal .publicScrollbarFaceActive:after,
+.ScrollbarLayoutMain:hover .ScrollbarLayoutFaceHorizontal:after {
+  bottom: calc(var(--scrollbar-face-margin)/2);
+}
+
+.ScrollbarLayoutFaceVertical {
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.ScrollbarLayoutFaceVertical:after {
+  height: 100%;
+  left: var(--scrollbar-face-margin);
+  right: var(--scrollbar-face-margin);
+  top: 0;
+}
+
+.ScrollbarLayoutMain:hover .ScrollbarLayoutFaceVertical:after,
+.ScrollbarLayoutFaceVertical .publicScrollbarFaceActive:after {
+  left: calc(var(--scrollbar-face-margin)/2);
+  right: calc(var(--scrollbar-face-margin)/2);
+}
+
+
+.publicFixedDataTableMain {
+  border-color: rgb(var(--gray-15));
+}
+
+.publicFixedDataTableHeader,
+.publicFixedDataTableHasBottomBorder {
+  border-color: rgb(var(--gray-15));
+}
+
+.publicFixedDataTableHeader .publicFixedDataTableCellMain {
+  font-weight: bold;
+}
+
+.publicFixedDataTableHeader,
+.publicFixedDataTableScrollbarSpacer,
+.publicFixedDataTableHeader .publicFixedDataTableCellMain {
+  box-shadow: var(--box-shadow-3);
+  background: rgb(var(--white));
+}
+
+.publicFixedDataTableScrollbarSpacer {
+  position: absolute;
+  z-index: 99;
+}
+
+.publicFixedDataTableFooter .publicFixedDataTableCellMain {
+  background-color: var(--fbui-desktop-background-light);
+  border-color: rgb(var(--gray-15));
+}
+
+.publicFixedDataTableHorizontalScrollbar .publicScrollbarMainHorizontal {
+  background: rgb(var(--white));
+}
+
+
+.publicFixedDataTableCellMain {
+  background: rgb(var(--white));
+  border-color: rgb(var(--gray-15));
+}
+
+.publicFixedDataTableCellHighlighted {
+  background-color: #f4f4f4;
+}
+
+.publicFixedDataTableCellCellContent {
+  padding: 8px 12px;
+}
+
+.publicFixedDataTableCellColumnResizerKnob {
+  background-color: #0284ff;
+}
+.publicFixedDataTableCellHasReorderHandle .publicFixedDataTableCellCellContent {
+	margin-left: 12px;
+}
+
+.fixedDataTableCellLayoutColumnReorderContainer {
+  border-color: #0284ff;
+  background-color: rgba(0,0,0,0.1);
+  width: 12px;
+  margin-right: -12px;
+  float: left;
+  cursor: move;
+}
+.fixedDataTableCellLayoutColumnReorderContainer:after {
+	content: '::';
+	position: absolute;
+	top: 50%;
+	left: 1px;
+	transform: translateY(-50%);
+}
+
+.fixedDataTableCellLayoutColumnReorderContainer {
+  border-color: #0284ff;
+  background-color: rgba(0,0,0,0.1);
+  width: 12px;
+  margin-right: -12px;
+  float: left;
+  cursor: move;
+}
+.fixedDataTableCellLayoutColumnReorderContainer:after {
+	content: '::';
+	position: absolute;
+	top: 50%;
+	left: 1px;
+	transform: translateY(-50%);
+}
+
+.publicFixedDataTableColumnResizerLineMain {
+  border-color: #0284ff;
+}
+
+.publicFixedDataTableRowMain {
+  background: rgb(var(--white));
+  border-bottom: 1px solid rgb(var(--gray-15));
+}
+
+.publicFixedDataTableRowHighlighted,
+.publicFixedDataTableRowHighlighted .publicFixedDataTableCellMain {
+  background-color: var(--fbui-desktop-background-light);
+}
+
+.publicFixedDataTableRowFixedColumnsDivider {
+  border-color: rgb(var(--gray-15));
+}
+
+.publicFixedDataTableRowColumnsShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==) repeat-y;
+}
+
+.publicFixedDataTableRowColumnsRightShadow {
+  transform: rotate(180deg);
+}
+
+.publicScrollbarMain .publicScrollbarMainActive,
+.publicScrollbarMain {
+  background-color: var(--scrollbar-track-color);
+}
+
+.publicScrollbarMainOpaque,
+.publicScrollbarMainOpaque .publicScrollbarMainActive,
+.publicScrollbarMainOpaque:hover {
+  background: rgb(var(--white));
+}
+
+.publicScrollbarFace:after {
+  background-color: var(--scrollbar-face-color);
+}
+
+.publicScrollbarMain:hover .publicScrollbarFace:after,
+.publicScrollbarMainActive .publicScrollbarFace:after,
+.publicScrollbarMaceActive:after {
+  background-color: var(--scrollbar-face-active-color);
+}
+

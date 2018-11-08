@@ -1,0 +1,223 @@
+html {
+  --old-white:255, 255, 255;
+  --duck-egg-blue:249, 251, 254;
+  --pale-grey:230, 234, 238;
+  --bluey-grey: 150, 162, 186;
+  --dusk: 80, 89, 120;
+  --dark-persian-blue: 54, 52, 76;
+  --dodger-blue: 59, 165, 255;
+  --medium-green: 55, 177, 72;
+  --medium-pink: 238, 56, 151;
+  --red-pink: 243, 64, 93;
+  --purply: 142, 68, 173;
+  --orangey-yellow: 255, 183, 33;
+  --dark-gray: 17, 17, 24;
+  /* boxshadow variable */
+  --shadow: 0px 2px 25px 0 rgba(17, 17, 24, 0.12);
+
+  /* colors */
+  --primary-main : 52, 213, 172;
+  --primary-main-light15 : 115, 226, 198;
+  --primary-main-dark15 : 32, 156, 125;
+  --primary-main-light45 : 242, 252, 250;
+  --primary-main-light30 : 179, 239, 224;
+
+  --primary-right-main : 36, 194, 193;
+  --primary-right-light45 : 212, 247, 247;
+  --primary-right-light30 : 148, 235, 235;
+  --primary-right-light15 : 83, 223, 222;
+  --primary-right-dark15 : 24, 129, 129;
+
+  --primary-left-main : 68, 231, 150;
+  --primary-left-dark15 : 17, 129, 73;
+  --primary-left-light15 : 25, 197, 112;
+  --primary-left-light30 : 136, 240, 188;
+  --primary-left-light45 : 204, 248, 226;
+
+  --secondary-1-main : 120, 178, 32;
+  --secondary-1-dark15 : 76, 113, 20;
+  --secondary-1-light15 : 159, 221, 66;
+  --secondary-1-light30 : 192, 233, 130;
+  --secondary-1-light45 : 225, 244, 195;
+
+  --secondary-2-main : 226, 27, 125;
+  --secondary-2-dark15 : 158, 19, 87;
+  --secondary-2-light15 : 236, 94, 164;
+  --secondary-2-light30 : 244, 162, 202;
+  --secondary-2-light45 : 252, 230, 241;
+
+  --secondary-3-main : 241, 185, 3;
+  --secondary-3-dark15 : 165, 127, 2;
+  --secondary-3-light15 : 253, 209, 68;
+  --secondary-3-light30 : 254, 228, 143;
+  --secondary-3-light45 : 252, 241, 208;
+
+  --secondary-4-main : 243, 7, 46;
+  --secondary-4-dark15 : 169, 5, 32;
+  --secondary-4-light15 : 250, 77, 105;
+  --secondary-4-light30 : 252, 151, 168;
+  --secondary-4-light45 : 254, 225, 230;
+
+  --secondary-5-main : 245, 116, 3;
+  --secondary-5-light15 : 253, 156, 72;
+  --secondary-5-dark15 : 169, 80, 2;
+  --secondary-5-light45 : 255, 238, 223;
+  --secondary-5-light30 : 254, 197, 147;
+
+  --secondary-6-main : 0, 95, 236;
+  --secondary-6-dark15 : 0, 64, 159;
+  --secondary-6-light15 : 57, 137, 255;
+  --secondary-6-light30 : 134, 183, 255;
+  --secondary-6-light45 : 210, 228, 255;
+
+  --gray-1 : 3, 8, 18;
+  --gray-2 : 19, 28, 46;
+  --gray-3 : 38, 48, 69;
+  --gray-4 : 55, 65, 87;
+  --gray-5 : 70, 81, 102;
+  --gray-6 : 85, 95, 116;
+  --gray-7 : 100, 110, 130;
+  --gray-8 : 115, 125, 143;
+  --gray-9 : 132, 140, 157;
+  --gray-10 : 147, 155, 170;
+  --gray-11 : 164, 170, 183;
+  --gray-12 : 181, 186, 197;
+  --gray-13 : 198, 202, 211;
+  --gray-14 : 213, 216, 223;
+  --gray-15 : 224, 227, 231;
+  --gray-16 : 244, 245, 248;
+  --gray-17 : 250, 251, 253;
+
+  --white: 255, 255, 255;
+
+  --primary-background : linear-gradient(60deg, rgb(var(--primary-right-main)), rgb(var(--primary-left-main)));
+  --primary-dark-font : rgb(var(--gray-3));
+  --primary-light-font: rgb(var(--white));
+  --primary-font-color: --primary-light-font;
+  /* colors */
+
+  /* spacing */
+  --space-4 : 0.4rem;
+  --space-8: 0.8rem;
+  --space-12: 1.2rem;
+  --space-16: 1.6rem;
+  --space-20: 2rem;
+  --space-24: 2.4rem;
+  --space-28 : 2.8rem;
+  --space-36 : 3.6rem;
+  --space-40 : 4rem;
+  --space-48 : 4.8rem;
+  /* spacing */
+
+  /* box shadow */
+  --box-shadow-1: 0px 4px 15px rgba(var(--gray-7), 0.1);
+  --box-shadow-2: 0px 3px 10px rgb(var(--gray-14));
+  --box-shadow-3: 0px 2px 5px rgba(var(--gray-15), 0.7);
+  --box-shadow-4: 0px 2px 10px rgba(var(--gray-8), 0.2);
+  --box-shadow-5: 0px 4px 30px rgba(var(--gray-1), 0.5);
+  --colored-shadow: 0px 10px 20px rgba(var(--primary-left-light15),0.15);
+  /* box shadow */
+
+  /* Typography */
+  --font-family: "Whitney SSm A", "Whitney SSm B", serif;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+
+  --font-size-12: 1.2rem;
+  --font-size-13: 1.3rem;
+  --font-size-14: 1.4rem;
+  --font-size-15: 1.5rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2.0rem;
+  --font-size-24: 2.4rem;
+  --font-size-28: 2.8rem;
+  --font-size-36: 3.6rem;
+  --font-size-48: 4.8rem;
+
+  --marutham-font-family: var(--font-family);
+  --marutham-font-size: 1.3rem;
+  --marutham-font-weight: 500;
+  --marutham-line-height: 1.6;
+  --marutham-letter-spacing: -0.1px;
+  --marutham-color: rgb(var(--gray-3));
+
+  --kondrai-font-size: 4.4rem;
+  --kondrai-font-weight: 500;
+  --kondrai-line-height: 1.6;
+  --kondrai-letter-spacing: -1.5px;
+
+  --tamarai-font-size: 3.4rem;
+  --tamarai-font-weight: 500;
+  --tamarai-line-height: 1.6;
+  --tamarai-letter-spacing: -1.1px;
+
+  --ambal-font-size: 2.6rem;
+  --ambal-font-weight: 500;
+  --ambal-line-height: 1.6;
+  --ambal-letter-spacing: -0.9px;
+
+  --kulavai-font-size: 2.2rem;
+  --kulavai-font-weight: 600;
+  --kulavai-line-height: 1.6;
+  --kulavai-letter-spacing: -0.6px;
+
+  --thavalam-font-size: 1.8rem;
+  --thavalam-font-weight: 500;
+  --thavalam-line-height: 1.6;
+  --thavalam-letter-spacing: -0.4px;
+
+  --kurinci-font-size: 1.7rem;
+  --kurinci-font-weight: 500;
+  --kurinci-line-height: 1.6;
+  --kurinci-letter-spacing: -0.4px;
+
+  --chemmal-font-size: 1.5rem;
+  --chemmal-font-weight: 500;
+  --chemmal-line-height: 1.6;
+  --chemmal-letter-spacing: -0.3px;
+
+  --sulli-font-family: var(--font-family);
+  --sulli-font-size: 1.4rem;
+  --sulli-font-weight: 500;
+  --sulli-line-height: 1.6;
+  --sulli-letter-spacing: -0.2px;
+
+  --thilakam-font-size: 1.3rem;
+  --thilakam-font-weight: 500;
+  --thilakam-line-height: 1.6;
+  --thilakam-letter-spacing: -0.1px;
+  --thilakam-color: rgb(var(--gray-12));
+
+  --marutham-link-font-size: 1.3rem;
+  --marutham-link-font-weight: 500;
+  --marutham-link-line-height: 1.6;
+  --marutham-link-letter-spacing: -0.1px;
+  --marutham-link-color: rgb(var(--secondary-6-light15));
+
+  --punnai-font-size: 1.3rem;
+  --punnai-font-weight: 400;
+  --punnai-line-height: 1.6;
+  --punnai-letter-spacing: -0.1px;
+  --punnai-color: rgb(var(--gray-5));
+
+  --kuravam-font-size: 1.2rem;
+  --kuravam-font-weight: 400;
+  --kuravam-line-height: 1.6;
+  --kuravam-letter-spacing: normal;
+  --kuravam-color: rgb(var(--gray-8));
+
+  --sural-font-size: 1.1rem;
+  --sural-font-weight: 400;
+  --sural-line-height: 1.6;
+  --sural-letter-spacing: 0.1px;
+  --sural-color: rgb(var(--gray-8));
+
+  --thumbai-font-size: 0.9rem;
+  --thumbai-font-weight: 400;
+  --thumbai-line-height: 1.6;
+  --thumbai-letter-spacing: 0.1px;
+
+}

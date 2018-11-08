@@ -1,0 +1,285 @@
+.rowIndex {
+  display: grid;
+  height: 4rem;
+  border-right: 1px solid #E6EBEF;
+  border-top: 1px solid #E6EBEF;
+  outline: none;
+  user-select: none;
+}
+
+.actionBtnIndex{
+  border-left: 1px solid #E6EBEF;
+}
+
+.deleteBtn{
+  align-self: center;
+  justify-content: center;
+  display: inline-grid;
+}
+.rowSelected {
+  background:#F9FBFE;
+}
+
+.rowSelectedHover {
+  background: rgb(240, 251, 255);
+}
+
+.rowindexValues{
+  justify-self: center;
+  align-self: center;
+}
+.rowindexOver{
+  background: #F9FBFE;
+}
+
+.rowIndex .rowIndexCheckBox {
+  justify-self: center;
+  align-self: center;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.autoPositionbase{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.contextmenuBase{
+  background: white;
+  box-shadow: 0px 2px 25px 0 rgba(17, 17, 24, 0.12);
+  pointer-events: all;
+  min-width: 12rem;
+  color: #333;
+}
+.contextmenuItem{
+  padding: 1.1rem 0.8rem;
+  cursor: pointer;
+  width: 200px;
+}
+.contextmenuItem:hover{
+  background: #E6EBEF;
+}
+.headerCell{
+  border-bottom-color:transparent;
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+  border-left-color:transparent;
+  border-left-style:solid;
+  border-left-width:0px;
+  border-right-color:#E6EBEF;
+  border-right-style:solid;
+  border-right-width:1px;
+  border-top-color:transparent;
+  border-top-style:solid;
+  border-top-width:0px;
+  cursor:default;
+  display:block;
+  height:100%;
+  line-height: 4rem;
+  padding: 0 1rem;
+  text-align:left;
+  width:100%;
+}
+.footerCell{
+  border-bottom-color:transparent;
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+  border-left-color:transparent;
+  border-left-style:solid;
+  border-left-width:0px;
+  border-right-color:#E6EBEF;
+  border-right-style:solid;
+  border-right-width:1px;
+  border-top-color:#E6EBEF;
+  border-top-style:solid;
+  border-top-width:1px;
+  cursor:default;
+  display:block;
+  height:100%;
+  line-height: 3.8rem;
+  padding: 0 1rem;
+  text-align:left;
+  width:100%;
+
+}
+
+.headerCellSelect {
+  background:#F9FBFE;
+}
+.cellError{
+  border:1px solid #F54402 !important;
+  background: #FFF7F2 !important;
+}
+
+.headerCell h5{
+  user-select: none;
+}
+
+.headerCell svg {
+  cursor: pointer;
+  margin: 12px 0;
+}
+
+.headerCell .icons {
+  height: 40px;
+  display: inline-grid;
+}
+
+.errorboxBase{
+  background: white;
+  padding: 0.1rem 1.2rem;
+  font-weight: 500;
+  min-width: 16rem;
+  max-width: 28rem;
+  box-shadow: 0 0 1px 1px #ccc;
+  border-top-width: 4px;
+  border-top-style: solid;
+  border-top-color: #F54402;
+}
+.flexifullSize{
+  width: 100%;
+  padding: 0;
+  height: 100%;
+}
+.gridtoolbar{
+  height: 55px;
+  margin-top: 20px;
+}
+.gridtoolbar .toolbarTittle {
+  line-height: 55px;
+  font-size: 2rem;
+  color: #333;
+  float: left;
+  width: 30rem;
+}
+
+.gridtoolbar .svgArrowContainer {
+  display: block;
+  padding: 2rem 0 1.2rem 0.6rem;
+}
+.flexifullSize .mainTable{
+  height: calc(100% - 105px);
+}
+.gridPagination{
+  line-height: 50px;
+  height: 50px;
+}
+.gridPagination .totalItems{
+  letter-spacing: .5px;
+  color: #333;
+}
+.rowsperPage{
+  padding: 10px;
+  height: 5rem;
+}
+.rowsperPage .count{
+  margin-right: 10px;
+}
+.totalItems:after{
+  clear: both;
+  display: table;
+  content: '';
+  zoom: 1;
+}
+.gridPagination:after{
+  clear: both;
+  display: table;
+  content: '';
+  zoom: 1;
+}
+.gridPagination .rowsCountPerPage{
+  padding-left: 3rem;
+}
+.pageNumbers{
+  padding-left: 1rem;
+}
+.pageNumbers li{
+  user-select: none;
+  float: left;
+  padding: 0 5px;
+}
+.pageNumbers li:last-child{
+  padding-right: 0;
+}
+.pageNumbers li .pages{
+  padding: 0 5px;
+}
+
+.pageNumbers ul:after{
+  clear: both;
+  display: table;
+  content: '';
+  zoom: 1;
+}
+.pageNumbers li .isvgSpace{
+  margin-left: -1.4rem;
+}
+.pointer{
+  cursor: pointer;
+}
+.pointerNone{
+  cursor: no-drop;
+}
+.flexitableBase{
+  outline: none;
+  position: relative;
+}
+
+.stretch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: none;
+  user-select: none;
+  cursor: default;
+}
+
+.flexiinput {
+  border-bottom-color: #E5EAEF;
+  border-bottom-style: solid;
+  border-bottom-width: 0px;
+  border-left-color: transparent;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: #E5EAEF;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: #E5EAEF;
+  border-top-style: solid;
+  border-top-width: 1px;
+  font-size: inherit;
+  height: 100%;
+  padding-bottom: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.4rem;
+  width: 100%;
+  border-radius: 0;
+  display: grid;
+}
+.footercell{
+  cursor: pointer;
+  border-bottom-color:#E5EAEF;
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+}
+.rowdgdragrowhandle{
+  cursor: grab;
+  width: 1rem;
+  margin-top: 0.5rem;
+  height: 3.5rem;
+  position: absolute;
+  margin-left: 0;
+  background-image: url('../images/dndimage.svg');
+  background-repeat: no-repeat;
+}
+
+.starRating{
+  outline: none;
+  padding: .4rem 0;
+}
